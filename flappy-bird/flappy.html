@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flappy Bird</title>
+    <style>
+        body {
+            margin: 0;
+            background: #70c5ce;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+
+        canvas {
+            display: block;
+            margin: auto;
+            background: #70c5ce;
+            border: 2px solid #000;
+        }
+
+        #score {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="score">Счёт: 0</div>
+    <canvas id="game" width="400" height="600"></canvas>
+
+    <script>
+        const canvas = document.getElementById('game');
+        const ctx = canvas.getContext('2d');
+        const scoreDisplay = document.getElementById('score');
+
+        const bird = {
+            x: 80,
+            y: 200,
+            width: 30,
+            height: 30,
+            gravity: 0.6,
+            lift: -10,
+            velocity: 0,
+            draw() {
+                ctx.fillStyle = 'yellow';
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+            },
+            update() {
+                this.velocity += this.gravity;
+                this.y += this.velocity;
+
+                if (this.y + this.height > canvas.height) {
+                    this.y = canvas.height - this.height;
+                    this.velocity = 0;
+                }
+
+                if (this.y < 0) {
+                    this.y = 0;
+                    this.velocity = 0;
+                }
+            },
+            flap() {
+                this.velocity = this.lift;
+            }
+        };
+
+        class Pipe {
+            constructor() {
+                this.top = Math.random() * (canvas.height / 2);
+                this.bottom = canvas.height - this.top - this.gap;
+                this.x = canvas.width;
+                this.width = 50;
+                this.speed = 2;
+                this.counted = false;
+            }
+
+            get gap() {
+                return 140;
+            }
+
+            draw() {
+                ctx.fillStyle = 'green';
+                ctx.fillRect(this.x, 0, this.width, this.top);
+                ctx.fillRect(this.x, canvas.height - this.bottom, this.width, this.bottom);
+            }
+
+            update() {
+                this.x -= this.speed;
+            }
+
+            offscreen() {
+                return this.x + this.width < 0;
+            }
+
+            hits(bird) {
+                if (
+                    bird.x < this.x + this.width &&
+                    bird.x + bird.width > this.x &&
+                    (
+                        bird.y < this.top ||
+                        bird.y + bird.height > canvas.height - this.bottom
+                    )
+                ) {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        let pipes = [];
+        let score = 0;
+        let gameOver = false;
+
+        function resetGame() {
+            pipes = [];
+            score = 0;
+            bird.y = 200;
+            bird.velocity = 0;
+            gameOver = false;
+        }
+
+        function loop() {
+            if (gameOver) {
+                ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = "#fff";
+                ctx.font = "36px sans-serif";
+                ctx.fillText("Игра окончена", 90, 250);
+                ctx.font = "24px sans-serif";
+                ctx.fillText("Нажмите пробел, чтобы начать заново", 30, 300);
+                return;
+            }
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            bird.update();
+            bird.draw();
+
+            // Обработка труб
+            if (frameCount % 100 === 0) {
+                pipes.push(new Pipe());
+            }
+
+            for (let i = pipes.length - 1; i >= 0; i--) {
+                const pipe = pipes[i];
+                pipe.update();
+                pipe.draw();
+
+                if (!pipe.counted && pipe.x + pipe.width < bird.x) {
+                    score++;
+                    pipe.counted = true;
+                }
+
+                if (pipe.hits(bird)) {
+                    gameOver = true;
+                }
+
+                if (pipe.offscreen()) {
+                    pipes.splice(i, 1);
+                }
+            }
+
+            scoreDisplay.textContent = "Счёт: " + score;
+
+            frameCount++;
+            requestAnimationFrame(loop);
+        }
+
+        let frameCount = 0;
+
+        // Управление
+        document.addEventListener('keydown', e => {
+            if (e.code === 'Space') {
+                if (gameOver) {
+                    resetGame();
+                    loop();
+                } else {
+                    bird.flap();
+                }
+            }
+        });
+
+        loop();
+    </script>
+</body>
+
+</html>
