@@ -1,0 +1,130 @@
+body {
+    background: rgba(24, 30, 52, 1);
+    /* font-size: 16px; */
+    line-height: 20px;
+    color: white;
+    font-family: 'Montserrat', 'arial', sans-serif;
+}
+
+
+.container {
+    max-width: 930px;
+    margin: 0 auto;
+    padding: 0 15px;
+    height: 100%;
+}
+
+/* ========================= HEADER ============================================== */
+
+.header {
+    padding: 30px 0 36px;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+
+
+}
+
+.header-nav {
+    margin-left: auto;
+
+}
+
+.header-list {
+    display: flex;
+}
+
+.header-item {
+    margin-right: 30px;
+}
+
+.header-button {
+    background: white;
+    color: #2766AE;
+    margin-left: 4px;
+    padding: 14px 30px;
+    border-radius: 100px;
+    font-weight: 500;
+}
+
+/* ========================== MAIN ====================================================== */
+
+.hero {
+    /* padding: 120px 0px; */
+    background: url("../img/hero-bg.png") 10% 50% / cover no-repeat;
+
+
+}
+
+
+
+.hero-title {
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+    line-height: 100%;
+    margin-bottom: 60px;
+    
+
+}
+
+
+.hero-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-text {
+    max-width: 436px;
+
+}
+
+.hero-text span {
+    max-width: 436px;
+    color: rgba(1, 162, 203, 1);
+    text-transform: uppercase;
+    font-weight: 700;
+
+}
+
+.paragraph-one {
+    padding-bottom: 15px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-direction: column;
+    min-width: 320px;
+
+}
+
+.hero-buttun-one,
+.hero-buttun-two {
+    border-radius: 100px;
+    padding: 18px 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-buttun-one img,
+.hero-buttun-two img {
+    margin-left: 4px;
+}
+
+.hero-buttun-one {
+    border-radius: 100px;
+    background: linear-gradient(180.00deg, rgba(0, 164, 204, 1), rgba(39, 102, 174, 1) 100%);
+}
+
+.hero-buttun-two {
+    border-radius: 100px;
+    background: linear-gradient(129.14deg, rgba(0, 164, 204, 1), rgba(39, 102, 174, 1) 100%);
+}
+
+.margin-bottom {
+    margin-bottom: 10px;
+}
