@@ -16,6 +16,10 @@ body {
 
 /* ========================= HEADER ============================================== */
 
+header {
+    margin-bottom: 19px;
+}
+
 .header {
     padding: 30px 0 36px;
 }
@@ -52,8 +56,10 @@ body {
 /* ========================== MAIN ====================================================== */
 
 .hero {
-    /* padding: 120px 0px; */
-    background: url("../img/hero-bg.png") 10% 50% / cover no-repeat;
+    padding: 120px 0 133px;
+    background: url("../img/hero-bg.png") 50% 86% / cover no-repeat;
+    /* Rectangle 1 */
+    height: 508px;
 
 
 }
@@ -67,14 +73,14 @@ body {
     text-align: center;
     line-height: 100%;
     margin-bottom: 60px;
-    
+
 
 }
 
 
 .hero-inner {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: space-between;
 }
 
@@ -118,6 +124,7 @@ body {
 .hero-buttun-one {
     border-radius: 100px;
     background: linear-gradient(180.00deg, rgba(0, 164, 204, 1), rgba(39, 102, 174, 1) 100%);
+    /* margin-bottom: 10px; */
 }
 
 .hero-buttun-two {
@@ -127,4 +134,125 @@ body {
 
 .margin-bottom {
     margin-bottom: 10px;
+}
+
+
+/* ===================================== КАРТОЧКИ =================================================== */
+
+.cards {
+    padding: 41px 0 98px;
+}
+
+.title {
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+    line-height: 100%;
+    margin-bottom: 15px;
+}
+
+.cards-text {
+    max-width: 513px;
+    text-align: center;
+    /* margin-bottom: 142px; */
+    margin: 0 auto 142px;
+
+}
+
+.cards-button {
+    max-width: 436px;
+    border-radius: 100px;
+    padding: 18px 30px;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    border-radius: 100px;
+    background: linear-gradient(180.00deg, rgba(0, 164, 204, 1), rgba(39, 102, 174, 1) 100%);
+}
+
+.cards-flex {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -14px;
+    margin-bottom: -28px;
+    padding: 30px;
+
+}
+
+.cards-flex-item {
+    margin-bottom: 28px;
+    flex: 0 0 25%;
+    padding: 0 14px;
+}
+
+.cards-flex-inner {
+    background: rgba(25, 124, 184, 1);
+    box-shadow: 4px 4px 13px 0px rgba(5, 13, 41, 0.76);
+    border: 2px solid rgba(23, 107, 174, 1);
+    border-radius: 16px;
+    padding: 28px 15px;
+}
+
+.cards-flex-title {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 100%;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.cards-flex-text {
+    text-align: center;
+}
+
+
+/* ======================================== FOOTER ===================================================== */
+
+
+footer {
+    border-top: 1px solid rgba(50, 57, 82, 1);
+    padding: 60px 0;
+}
+
+.footer-inner {
+    display: flex;
+
+}
+
+.footer-desk {
+    max-width: 267px;
+    margin-right: auto;
+}
+
+.footer-desk img {
+    margin-bottom: 15px;
+}
+
+.footer-title {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 100%;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.footer-item {
+    margin-bottom: 10px;
+}
+
+.footer-col {
+    max-width: 204px;
+    width: 100%;
+}
+
+.footer-col-margin {
+    max-width: 204px;
+    width: 100%;
+    margin-right: 28px;
+}
+
+.buttom-text {
+    line-height: 20px;
 }
