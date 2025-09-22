@@ -1,0 +1,171 @@
+body {
+    background-color: #1a1a1c;
+    color: #fff;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.box {
+    background: #3b3a3d;
+    border-radius: 15px;
+    width: 300px;
+    height: 300px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7de07d;
+    font-size: 30px;
+}
+
+.box span {
+    opacity: 0;
+}
+
+.box__scale {
+    position: absolute;
+    top: -100px;
+    left: -300px;
+    right: 600px;
+    height: 30px;
+    background: #fff;
+}
+
+.box:hover .box__scale {
+    right: -300px;
+    transition: 2s;
+}
+
+.box:hover span {
+    transition-delay: 2s;
+    transition-duration: 1s;
+    opacity: 1;
+}
+
+/* ======================================================= */
+
+.anim-list {
+    height: 30px;
+    background: rgb(133, 169, 223);
+}
+
+.anim-block {
+    animation-name: move-block;
+    animation-duration: 3s;
+    /* animation-delay: 2s;  */
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    width: 30px;
+    height: 30px;
+    background: rgb(255, 17, 0);
+}
+
+@keyframes move-block {
+    0% {
+        /* background: GREEN; */
+        margin-left: 0px;
+    }
+
+    50% {
+        margin-left: calc(100% - 30PX);
+    }
+
+    100% {
+        background: yellow;
+        margin-left: calc(50% - 30px);
+
+    }
+}
+
+
+.anim-block1 {
+    animation-name: move-block1;
+    animation-duration: 3s;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    width: 30px;
+    height: 30px;
+    background: rgb(0, 255, 242);
+}
+
+.anim-block2 {
+    animation-name: move-block2;
+    animation-duration: 3s;
+    animation-delay: 1s; 
+    animation-iteration-count: 20;
+    animation-direction: infinite;
+    width: 30px;
+    height: 30px;
+    background: rgb(99, 248, 0);
+}
+
+.anim-block3 {
+    animation-name: move-block3;
+    animation-duration: 3s;
+    animation-delay: 3s; 
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    width: 30px;
+    height: 30px;
+    background: rgb(38, 0, 255);
+}
+
+@keyframes move-block1 {
+    0% {
+        /* background: GREEN; */
+        margin-left: 0px;
+    }
+
+    50% {
+        margin-left: calc(100% - 30PX);
+    }
+
+    100% {
+        background: rgb(0, 4, 255);
+        margin-left: calc(50% - 30px);
+
+    }
+}
+
+
+@keyframes move-block2 {
+    0% {
+        /* background: GREEN; */
+        margin-left: 0px;
+    }
+
+    50% {
+        margin-left: calc(100% - 30PX);
+    }
+
+    100% {
+        background: rgb(255, 0, 0);
+        margin-left: calc(50% - 30px);
+
+    }
+}
+
+
+@keyframes move-block3 {
+    0% {
+        /* background: GREEN; */
+        margin-left: 0px;
+    }
+
+    50% {
+        margin-left: calc(100% - 30PX);
+    }
+
+    100% {
+        background: rgb(0, 255, 13);
+        margin-left: calc(50% - 30px);
+
+    }
+}
+
