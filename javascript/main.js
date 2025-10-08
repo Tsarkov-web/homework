@@ -1,55 +1,33 @@
-// Создайте объект с вашим описанием(имя, возраст и т.д.).
+const btn = document.querySelector('.btn-open')
+const modal = document.querySelector('.modal')
+const body = document.body
 
-const firsName = 'Nikita'
-const lastName = 'Tsarkov'
-const age = 27 + 'y.o.'
-const country = 'Russia'
+const openModal = () => {
+    modal.classList.add('modal--open')
+    body.classList.add('body--fixed')
 
-console.log(firsName, lastName, age)
-
-// Создайте метод объекта, который в качестве аргумента будет принимать имя и возвращать строку ‘Hello “переданный аргумент”’.\
-
-console.log(`Hello ${firsName}`)
-
-// Создайте массив объектов с описанием пользователей(такой мы делали в уроке).
-// Объявите отдельную переменную, в которой будет храниться количество простых пользователей, начальное значение будет - 0.
-// Обойдите массив пользователей и если пользователь не является админом - прибавьте к ранее созданной переменной единицу.
-// После окончания работы цикла выведите в консоль переменную с количеством простых пользователей.
-
-
-// Создаем массив объектов с пользователями  
-const users = [
-    {
-        nik: 'Nikita',
-        role: 'Admin'
-    },
-    {
-        nik: 'Alex',
-        role: 'user'
-    },
-    {
-        nik: 'Jylia',
-        role: 'user'
-    },
-    {
-        nik: 'John',
-        role: 'user'
-    },
-    {
-        nik: 'Irina',
-        role: 'Admin'
-    },
-
-];
-
-let usersCount = 0;
-
-for (let i = 0; i < users.length;i++) {
-    if (users[i].role > 'Admin'){
-        usersCount++;
-    }
 }
 
-console.log('Количество обычных пользователей: ' +usersCount);
+const closeModal = () => {
+    modal.classList.remove('modal--open')
+}
 
+btn.addEventListener('click', () => {
+    modal.classList.add('modal--open')
+})
 
+btn.addEventListener('click', openModal)
+
+modal.addEventListener('click', event => {
+    const target = event.target
+    if (target && target.classList.contains('modal') || target.classList.contains('modal--close')) {
+        closeModal()
+    }
+})
+
+document.addEventListener('keydown', event => {
+    if (event.code === 'Escape' && modal.classList.contains('modal--open')) {
+        closeModal()
+    }
+
+})
